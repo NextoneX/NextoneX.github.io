@@ -1,15 +1,108 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<meta charset="utf-8">
-<title>我的作品</title>
-<style>
-    body {
-        background-color:#d0e4fe;
-    }
-</style>
+	<title>Our Love Story</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<style type="text/css">
+		@font-face {
+			font-family: digit;
+			src: url('digital-7_mono.ttf') format("truetype");
+		}
+	</style>
+	<link href="css/default.css" type="text/css" rel="stylesheet">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/garden.js"></script>
+    <script type="text/javascript" src="js/functions.js"></script>
 </head>
+
 <body>
-    <h1><a href="/" style="text-decoration:none;">作者很懒,还没放东西上去</a></h1>
+	<div id="mainDiv">
+		<div id="content">
+			<div id="code">
+				<span class="comments">/**</span><br />
+				<span class="space"/><span class="comments">* 对不起，最近时间有点紧</span><br />
+				<span class="space"/><span class="comments">* 我仿了一份情书的代码</span><br />
+				<span class="space"/><span class="comments">* 希望下一次能自己从头写一份</span><br />
+				<span class="space"/><span class="comments">* 那么，这暂时就是你的礼物啦</span><br />
+				<span class="space"/><span class="comments">* 这次，我来给你讲两个包子的故事</span><br />
+				<span class="space"/><span class="comments">*/</span><br />
+				Boy i = <span class="keyword">new</span> Boy(<span class="string">"汤包"</span>);<br />
+				Girl u = <span class="keyword">new</span> Girl(<span class="string">"肉包"</span>);<br />
+				<span class="comments">// 2022年12月19日，汤包向肉包表白了 </span><br />
+				i.love(u);<br />
+				<span class="comments">// 幸运的是，肉包接受了</span><br />
+				u.accepted();<br />
+				<span class="comments">// 12月20日，它们正式在一起了</span><br />
+				<span class="comments">// 它们兴奋的分享了这个消息，所有人都为他们送上了祝福</span><br />
+				wait(25*60*60);<br />
+				fall_in_love(i, u);<br />
+				<span class="comments">// 然后呢，汤包每天都在想着肉包</span><br />
+				i.miss(u);<br />
+				<span class="comments">// 他非常的在意，自己对肉包够不够好</span><br />
+				i.takeCareOf(u);<br />
+				<span class="comments">// 但是，汤包总是有事情要干</span><br />
+				i.setstatus(_BUSY_);
+				<span class="comments">// 汤包很难受，他很想陪肉包多玩一会</span><br />
+				<span class="keyword">while</span> (i.status() == _BUSY_) {<br />
+				<span class="placeholder"/>bool check = i.work();<br />
+				<span class="placeholder"/><span class="comments">// 所以它干啊干，希望能把事情干完</span><br />
+				<span class="placeholder"/>if ( !check ) i.setstatus(_IDLE_);<br />
+				}<br />
+				<span class="comments">// 因为他真的，想和你去很多很多地方</span><br />
+				<span class="keyword">while</span> ( TRUE ) {<br />
+					<span class="placeholder"/>travel(i, u);<br />
+				}<br />
+			</div>
+			<div id="loveHeart">
+				<canvas id="garden"></canvas>
+				<div id="words">
+					<div id="messages">
+						肉包小姐，我们在一起已经
+						<div id="elapseClock"></div>
+					</div>
+					<div id="loveu">
+						爱你真的不是两三天<br/>
+						<div class="signature">- 汤包</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="copyright">
+			Inspired by <a href="http://www.openrise.com/lab/FlowerPower/">FlowerPower</a> project.<br />
+		</div>
+	</div>
+	<script type="text/javascript">
+		var offsetX = $("#loveHeart").width() / 2;
+		var offsetY = $("#loveHeart").height() / 2 - 55;
+		var together = new Date();
+		together.setFullYear(2022, 11, 20);
+		together.setHours(23);
+		together.setMinutes(22);
+		together.setSeconds(0);
+		together.setMilliseconds(0);
+		
+		if (!document.createElement('canvas').getContext) {
+			var msg = document.createElement("div");
+			msg.id = "errorMsg";
+			msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+			document.body.appendChild(msg);
+			$("#code").css("display", "none")
+			$("#copyright").css("position", "absolute");
+			$("#copyright").css("bottom", "10px");
+		    document.execCommand("stop");
+		} else {
+			setTimeout(function () {
+				startHeartAnimation();
+			}, 5000);
+
+			timeElapse(together);
+			setInterval(function () {
+				timeElapse(together);
+			}, 500);
+
+			adjustCodePosition();
+			$("#code").typewriter();
+		}
+	</script>
 </body>
 </html>
